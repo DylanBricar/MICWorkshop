@@ -15,3 +15,12 @@ npm i react-router-dom
 
 ## add boostrap
 npm i bootstrap
+
+## Install moment
+npm i moment
+
+## install sass 
+npm i sass
+
+## Run your app
+npm start
