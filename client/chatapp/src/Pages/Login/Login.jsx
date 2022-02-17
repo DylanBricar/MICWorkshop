@@ -4,7 +4,7 @@
 import "./Login.scss";
 
 var Login = (props) => (
-  <div>
+  <>
     <div className="login-container" id="container">
       <div className="form-container sign-in-container">
         <form className="login-form" action="#">
@@ -51,7 +51,7 @@ var Login = (props) => (
     <footer>
       <p>Workshop - 2022</p>
     </footer>
-  </div>
+  </>
 );
 
 export default Login;
