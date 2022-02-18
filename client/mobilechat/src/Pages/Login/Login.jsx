@@ -6,10 +6,12 @@ const Login = ({ navigation }) => {
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState("user", {});
+
   useEffect(() => {
-    GetUserFromLocalStorage();
+    getUserFromLocalStorage();
   }, []);
-  const GetUserFromLocalStorage = async () => {
+
+  const getUserFromLocalStorage = async () => {
     try {
       const u = await AsyncStorage.getItem("user");
       if (u !== null) {
@@ -20,6 +22,7 @@ const Login = ({ navigation }) => {
     }
   };
   console.log("Retrieved User : ", user);
+
   const connectUser = (event) => {
     event.preventDefault();
     var obj = {
@@ -28,7 +31,8 @@ const Login = ({ navigation }) => {
       body: JSON.stringify({ name: name, password: password }),
     };
     console.log("Connecting : ", obj);
-    fetch("http://172.20.10.2:4445/user/connect", obj)
+
+    fetch("http://localhost:4445/user/connect", obj)
       .then((data) => data.json())
       .then((data) => {
         console.log("Connected :", data);
@@ -39,11 +43,12 @@ const Login = ({ navigation }) => {
         console.log("Error : ", error);
       });
   };
+
   return (
     <>
       <View style={style.mainContainer}>
         <View style={style.innerContainer}>
-          <Text style={style.title}> Log In </Text>
+          <Text style={style.title}>Log In</Text>
           <TextInput
             placeholder="Username"
             style={style.inputUsername}
@@ -56,7 +61,7 @@ const Login = ({ navigation }) => {
             onChangeText={(e) => setPassword(e)}
             value={password}
           />
-          <Text> aa : </Text>
+          <Text>Entrez vos informations.</Text>
           <Pressable
             title="Login"
             style={style.loginButton}
@@ -69,6 +74,7 @@ const Login = ({ navigation }) => {
     </>
   );
 };
+
 const style = StyleSheet.create({
   mainContainer: {
     // display: 'flex',
@@ -128,4 +134,5 @@ const style = StyleSheet.create({
     color: "#ffffff",
   },
 });
+
 export default Login;

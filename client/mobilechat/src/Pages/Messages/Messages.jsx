@@ -8,28 +8,11 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+
 const Messages = ({}) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#f5f5f5",
-      }}
-    >
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          borderBottomWidth: 1,
-          borderColor: "#d5d5d5",
-          padding: 20,
-          paddingTop: 10,
-          paddingBottom: 10,
-        }}
-      >
+    <View style={style.mainContainer}>
+      <View style={style.innerContainer}>
         <Image
           style={{ width: 50, height: 50 }}
           source={{
@@ -43,67 +26,18 @@ const Messages = ({}) => {
           <Text style={{ opacity: 0.6 }}>already 1902 messages.</Text>
         </View>
       </View>
-      <View
-        style={{
-          flex: 1,
-          alignContent: "flex-end",
-          justifyContent: "flex-end",
-        }}
-      >
-        <ScrollView
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: 16,
-            paddingBottom: 40,
-            marginBottom: 0,
-          }}
-        >
+      <View style={style.containerMsg}>
+        <ScrollView style={style.scrollMsg}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
-            <View
-              style={{
-                width: "auto",
-                padding: 8,
-                borderRadius: 4,
-                marginBottom: 8,
-                marginLeft: 32,
-                flexDirection: "column",
-                alignItems: "flex-end",
-                alignContent: "flex-end",
-                alignItems: "flex-end",
-                backgroundColor: "#e8ebfa",
-              }}
-            >
-              <View
-                style={{
-                  display: "flex",
-                  flex: 1,
-                  flexDirection: "row",
-                  opacity: 0.6,
-                }}
-              >
+            <View style={style.containerOtherMsg}>
+              <View style={style.innerContainerOtherMsg}>
                 <Text style={{ marginRight: 8 }}>11 Fevrier 2022</Text>
-                <View
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
+                <View style={style.containerOtherName}>
                   <Text style={{ marginRight: 8, opacity: 0.8 }}>Lionnel</Text>
                 </View>
               </View>
               <View style={{ paddingTop: 4 }}>
-                <Text
-                  style={{
-                    color: "#333",
-                    fontSize: 15,
-                    opacity: 0.9,
-                    fontWeight: "bold",
-                  }}
-                >
+                <Text style={style.messageOtherText}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -112,41 +46,16 @@ const Messages = ({}) => {
               </View>
             </View>
           ))}
+
           {[1, 2, 3].map((item, idenx) => (
-            <View
-              style={{
-                width: "auto",
-                padding: 8,
-                borderRadius: 4,
-                marginBottom: 8,
-                flexDirection: "column",
-                backgroundColor: "#86BB71",
-                color: "white",
-                marginRight: 32,
-              }}
-            >
-              <View
-                style={{
-                  display: "flex",
-                  flex: 1,
-                  flexDirection: "row",
-                  opacity: 0.6,
-                }}
-              >
+            <View style={style.containerMyMsg}>
+              <View style={style.innerContainerMyMsg}>
                 <Text
                   style={{ marginRight: 8, opacity: 0.8, fontWeight: "bold" }}
                 >
                   Lionnel
                 </Text>
-                <View
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    alignItems: "center",
-                    flexDirection: "row",
-                  }}
-                >
+                <View style={style.innerContainerMyMsg}>
                   <Text style={{ marginRight: 8, color: "white" }}>
                     11 Fevrier 2022
                   </Text>
@@ -165,42 +74,122 @@ const Messages = ({}) => {
         </ScrollView>
       </View>
 
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          borderTopWidth: 1,
-          borderColor: "#d5d5d5",
-          padding: 15,
-          alignItems: "center",
-        }}
-      >
-        <TextInput
-          style={{
-            backgroundColor: "white",
-            maxHeight: 50,
-            color: "#333",
-            padding: 10,
-            flex: 1,
-          }}
-          multiline={true}
-          numberOfLines={2}
-        >
+      <View style={style.containerInputMsg}>
+        <TextInput style={style.inputMsg} multiline={true} numberOfLines={2}>
           Message
         </TextInput>
-        <TouchableOpacity
-          style={{
-            padding: 16,
-            paddingTop: 16,
-            paddingBotom: 16,
-            backgroundColor: "#3e414c",
-          }}
-        >
+        <TouchableOpacity style={style.btnTouchable}>
           <Text style={{ color: "white" }}>Send</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
+
+const style = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#f5f5f5",
+  },
+  innerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderColor: "#d5d5d5",
+    padding: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  containerMsg: {
+    flex: 1,
+    alignContent: "flex-end",
+    justifyContent: "flex-end",
+  },
+  scrollMsg: {
+    display: "flex",
+    flexDirection: "column",
+    padding: 16,
+    paddingBottom: 40,
+    marginBottom: 0,
+  },
+  messageOtherText: {
+    color: "#333",
+    fontSize: 15,
+    opacity: 0.9,
+    fontWeight: "bold",
+  },
+  containerOtherName: {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  innerContainerOtherMsg: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    opacity: 0.6,
+  },
+  containerOtherMsg: {
+    width: "auto",
+    padding: 8,
+    borderRadius: 4,
+    marginBottom: 8,
+    marginLeft: 32,
+    flexDirection: "column",
+    alignItems: "flex-end",
+    alignContent: "flex-end",
+    alignItems: "flex-end",
+    backgroundColor: "#e8ebfa",
+  },
+  containerMyMsg: {
+    width: "auto",
+    padding: 8,
+    borderRadius: 4,
+    marginBottom: 8,
+    flexDirection: "column",
+    backgroundColor: "#86BB71",
+    color: "white",
+    marginRight: 32,
+  },
+  innerContainerMyMsg: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    opacity: 0.6,
+  },
+  innerContainerMyMsg: {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  containerInputMsg: {
+    display: "flex",
+    flexDirection: "row",
+    borderTopWidth: 1,
+    borderColor: "#d5d5d5",
+    padding: 15,
+    alignItems: "center",
+  },
+  inputMsg: {
+    backgroundColor: "white",
+    maxHeight: 50,
+    color: "#333",
+    padding: 10,
+    flex: 1,
+  },
+  btnTouchable: {
+    padding: 16,
+    paddingTop: 16,
+    paddingBotom: 16,
+    backgroundColor: "#3e414c",
+  },
+});
 
 export default Messages;
