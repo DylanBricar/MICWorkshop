@@ -31,8 +31,9 @@ const Login = ({ navigation }) => {
       body: JSON.stringify({ name: name, password: password }),
     };
     console.log("Connecting : ", obj);
+    console.log();
 
-    fetch("http://localhost:4445/user/connect", obj)
+    fetch("http://192.168.1.109:4445/user/connect", obj)
       .then((data) => data.json())
       .then((data) => {
         console.log("Connected :", data);

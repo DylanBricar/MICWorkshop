@@ -29,7 +29,7 @@ const Messages = ({}) => {
       <View style={style.containerMsg}>
         <ScrollView style={style.scrollMsg}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
-            <View style={style.containerOtherMsg}>
+            <View style={style.containerOtherMsg} key={index}>
               <View style={style.innerContainerOtherMsg}>
                 <Text style={{ marginRight: 8 }}>11 Fevrier 2022</Text>
                 <View style={style.containerOtherName}>
@@ -47,8 +47,8 @@ const Messages = ({}) => {
             </View>
           ))}
 
-          {[1, 2, 3].map((item, idenx) => (
-            <View style={style.containerMyMsg}>
+          {[1, 2, 3].map((item, index) => (
+            <View style={style.containerMyMsg} key={index}>
               <View style={style.innerContainerMyMsg}>
                 <Text
                   style={{ marginRight: 8, opacity: 0.8, fontWeight: "bold" }}
@@ -187,7 +187,7 @@ const style = StyleSheet.create({
   btnTouchable: {
     padding: 16,
     paddingTop: 16,
-    paddingBotom: 16,
+    paddingBottom: 16,
     backgroundColor: "#3e414c",
   },
 });

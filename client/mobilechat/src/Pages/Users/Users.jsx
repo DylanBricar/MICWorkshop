@@ -18,7 +18,7 @@ const Users = ({ navigation }) => {
   }, []);
 
   const getUsers = () => {
-    fetch("http://localhost:4445/user", { method: "GET" })
+    fetch(`http://192.168.1.109:4445/user`, { method: "GET" })
       .then((data) => data.json())
       .then((data) => {
         console.log("Users :", data);
@@ -81,7 +81,7 @@ const Users = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <ScrollView style={{}}>
           {user.map((item, index) => (
-            <TouchableOpacity style={style.btnTouchableChat}>
+            <TouchableOpacity style={style.btnTouchableChat} key={index}>
               <Image
                 style={{ width: 50, height: 50 }}
                 source={{
