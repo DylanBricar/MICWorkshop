@@ -8,8 +8,27 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from "react-native";
+import { useState, useEffect } from "react";
 
 const Users = ({ navigation }) => {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = () => {
+    fetch("http://localhost:4445/user", { method: "GET" })
+      .then((data) => data.json())
+      .then((data) => {
+        console.log("Users :", data);
+        setUser(data);
+      })
+      .catch((error) => {
+        console.log("Error : ", error);
+      });
+  };
+
   const navigateToMessagesPage = () => {
     navigation.navigate("Messages", {});
   };
@@ -61,7 +80,7 @@ const Users = ({ navigation }) => {
       </View>
       <View style={{ flex: 1 }}>
         <ScrollView style={{}}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+          {user.map((item, index) => (
             <TouchableOpacity style={style.btnTouchableChat}>
               <Image
                 style={{ width: 50, height: 50 }}
@@ -74,7 +93,7 @@ const Users = ({ navigation }) => {
                   <Text
                     style={{ color: "white", fontWeight: "bold", fontSize: 19 }}
                   >
-                    Lionnel
+                    {item.name}
                   </Text>
                 </View>
                 <View style={style.statusOther} className="status">
